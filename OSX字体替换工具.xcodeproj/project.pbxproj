@@ -13,6 +13,10 @@
 		5359822D19A853660038FFC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5359822C19A853660038FFC4 /* Images.xcassets */; };
 		5359823019A853660038FFC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5359822E19A853660038FFC4 /* Main.storyboard */; };
 		5359823C19A853660038FFC4 /* OSX______Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5359823B19A853660038FFC4 /* OSX______Tests.swift */; };
+		538D870F19A8677D00C32941 /* PubVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D870E19A8677D00C32941 /* PubVar.swift */; };
+		538D871319A8693600C32941 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D871219A8693600C32941 /* MainWindow.swift */; };
+		538D871519A8694400C32941 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D871419A8694400C32941 /* MainView.swift */; };
+		538D871719A86F3100C32941 /* SystemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D871619A86F3100C32941 /* SystemList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		5359823A19A853660038FFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5359823B19A853660038FFC4 /* OSX______Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSX______Tests.swift"; sourceTree = "<group>"; };
 		535982A919A856960038FFC4 /* OSX字体替换工具启动器.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OSX字体替换工具启动器.xcodeproj"; path = "OSX字体替换工具启动器/OSX字体替换工具启动器.xcodeproj"; sourceTree = "<group>"; };
+		538D870E19A8677D00C32941 /* PubVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubVar.swift; sourceTree = "<group>"; };
+		538D871219A8693600C32941 /* MainWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		538D871419A8694400C32941 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		538D871619A86F3100C32941 /* SystemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,10 @@
 				5359822C19A853660038FFC4 /* Images.xcassets */,
 				5359822E19A853660038FFC4 /* Main.storyboard */,
 				5359822419A853660038FFC4 /* Supporting Files */,
+				538D870E19A8677D00C32941 /* PubVar.swift */,
+				538D871219A8693600C32941 /* MainWindow.swift */,
+				538D871419A8694400C32941 /* MainView.swift */,
+				538D871619A86F3100C32941 /* SystemList.swift */,
 			);
 			path = "OSX字体替换工具";
 			sourceTree = "<group>";
@@ -245,8 +257,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5359822B19A853660038FFC4 /* AppDelegate.swift in Sources */,
+				538D871519A8694400C32941 /* MainView.swift in Sources */,
 				5359822919A853660038FFC4 /* ViewController.swift in Sources */,
+				538D871319A8693600C32941 /* MainWindow.swift in Sources */,
+				538D871719A86F3100C32941 /* SystemList.swift in Sources */,
 				5359822719A853660038FFC4 /* main.swift in Sources */,
+				538D870F19A8677D00C32941 /* PubVar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +450,7 @@
 				5359824119A853660038FFC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5359824219A853660038FFC4 /* Build configuration list for PBXNativeTarget "OSX字体替换工具Tests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +459,7 @@
 				5359824419A853660038FFC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

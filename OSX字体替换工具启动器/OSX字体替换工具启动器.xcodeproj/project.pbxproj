@@ -28,7 +28,7 @@
 		535982A219A856960038FFC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		535982AF19A857990038FFC4 /* Starter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Starter.h; sourceTree = "<group>"; };
 		535982B019A857990038FFC4 /* Starter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Starter.m; sourceTree = "<group>"; };
-		535982B519A861790038FFC4 /* OSX字体替换工具.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = "OSX字体替换工具.app"; path = "../../../Library/Developer/Xcode/DerivedData/OSX字体替换工具-btndcnpkcezgekgvlosysysebmlh/Build/Products/Debug/OSX字体替换工具.app"; sourceTree = "<group>"; };
+		538D870D19A8670900C32941 /* OSX字体替换工具.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = "OSX字体替换工具.app"; path = "../../../../../Users/yashi/Library/Developer/Xcode/DerivedData/OSX字体替换工具-bqynseddbnkykyaeofspmrnmseff/Build/Products/Debug/OSX字体替换工具.app"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +45,6 @@
 		5359829619A856960038FFC4 = {
 			isa = PBXGroup;
 			children = (
-				535982B519A861790038FFC4 /* OSX字体替换工具.app */,
 				535982A119A856960038FFC4 /* OSX字体替换工具启动器 */,
 				535982A019A856960038FFC4 /* Products */,
 			);
@@ -62,6 +61,7 @@
 		535982A119A856960038FFC4 /* OSX字体替换工具启动器 */ = {
 			isa = PBXGroup;
 			children = (
+				538D870D19A8670900C32941 /* OSX字体替换工具.app */,
 				535982A219A856960038FFC4 /* main.m */,
 				535982AF19A857990038FFC4 /* Starter.h */,
 				535982B019A857990038FFC4 /* Starter.m */,
@@ -240,6 +240,7 @@
 				535982A819A856960038FFC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

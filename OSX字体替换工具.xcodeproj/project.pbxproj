@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5359822719A853660038FFC4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5359822619A853660038FFC4 /* main.swift */; };
+		5359822919A853660038FFC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5359822819A853660038FFC4 /* ViewController.swift */; };
+		5359822B19A853660038FFC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5359822A19A853660038FFC4 /* AppDelegate.swift */; };
+		5359822D19A853660038FFC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5359822C19A853660038FFC4 /* Images.xcassets */; };
+		5359823019A853660038FFC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5359822E19A853660038FFC4 /* Main.storyboard */; };
+		5359823C19A853660038FFC4 /* OSX______Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5359823B19A853660038FFC4 /* OSX______Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5359823619A853660038FFC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5359821919A853660038FFC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5359822019A853660038FFC4;
+			remoteInfo = "OSX字体替换工具";
+		};
+		535982AD19A856980038FFC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535982A919A856960038FFC4 /* OSX字体替换工具启动器.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5359829F19A856960038FFC4;
+			remoteInfo = "OSX字体替换工具启动器";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5359822119A853660038FFC4 /* OSX字体替换工具.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OSX字体替换工具.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5359822519A853660038FFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5359822619A853660038FFC4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5359822819A853660038FFC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5359822A19A853660038FFC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5359822C19A853660038FFC4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5359822F19A853660038FFC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5359823519A853660038FFC4 /* OSX字体替换工具Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OSX字体替换工具Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5359823A19A853660038FFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5359823B19A853660038FFC4 /* OSX______Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSX______Tests.swift"; sourceTree = "<group>"; };
+		535982A919A856960038FFC4 /* OSX字体替换工具启动器.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OSX字体替换工具启动器.xcodeproj"; path = "OSX字体替换工具启动器/OSX字体替换工具启动器.xcodeproj"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5359821E19A853660038FFC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5359823219A853660038FFC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5359821819A853660038FFC4 = {
+			isa = PBXGroup;
+			children = (
+				535982A919A856960038FFC4 /* OSX字体替换工具启动器.xcodeproj */,
+				5359822319A853660038FFC4 /* OSX字体替换工具 */,
+				5359823819A853660038FFC4 /* OSX字体替换工具Tests */,
+				5359822219A853660038FFC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5359822219A853660038FFC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5359822119A853660038FFC4 /* OSX字体替换工具.app */,
+				5359823519A853660038FFC4 /* OSX字体替换工具Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5359822319A853660038FFC4 /* OSX字体替换工具 */ = {
+			isa = PBXGroup;
+			children = (
+				5359822819A853660038FFC4 /* ViewController.swift */,
+				5359822A19A853660038FFC4 /* AppDelegate.swift */,
+				5359822C19A853660038FFC4 /* Images.xcassets */,
+				5359822E19A853660038FFC4 /* Main.storyboard */,
+				5359822419A853660038FFC4 /* Supporting Files */,
+			);
+			path = "OSX字体替换工具";
+			sourceTree = "<group>";
+		};
+		5359822419A853660038FFC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5359822519A853660038FFC4 /* Info.plist */,
+				5359822619A853660038FFC4 /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5359823819A853660038FFC4 /* OSX字体替换工具Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5359823B19A853660038FFC4 /* OSX______Tests.swift */,
+				5359823919A853660038FFC4 /* Supporting Files */,
+			);
+			path = "OSX字体替换工具Tests";
+			sourceTree = "<group>";
+		};
+		5359823919A853660038FFC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5359823A19A853660038FFC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		535982AA19A856960038FFC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				535982AE19A856980038FFC4 /* OSX字体替换工具启动器 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5359822019A853660038FFC4 /* OSX字体替换工具 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5359823F19A853660038FFC4 /* Build configuration list for PBXNativeTarget "OSX字体替换工具" */;
+			buildPhases = (
+				5359821D19A853660038FFC4 /* Sources */,
+				5359821E19A853660038FFC4 /* Frameworks */,
+				5359821F19A853660038FFC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OSX字体替换工具";
+			productName = "OSX字体替换工具";
+			productReference = 5359822119A853660038FFC4 /* OSX字体替换工具.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5359823419A853660038FFC4 /* OSX字体替换工具Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5359824219A853660038FFC4 /* Build configuration list for PBXNativeTarget "OSX字体替换工具Tests" */;
+			buildPhases = (
+				5359823119A853660038FFC4 /* Sources */,
+				5359823219A853660038FFC4 /* Frameworks */,
+				5359823319A853660038FFC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5359823719A853660038FFC4 /* PBXTargetDependency */,
+			);
+			name = "OSX字体替换工具Tests";
+			productName = "OSX字体替换工具Tests";
+			productReference = 5359823519A853660038FFC4 /* OSX字体替换工具Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5359821919A853660038FFC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "神楽坂雅詩";
+				TargetAttributes = {
+					5359822019A853660038FFC4 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					5359823419A853660038FFC4 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 5359822019A853660038FFC4;
+					};
+				};
+			};
+			buildConfigurationList = 5359821C19A853660038FFC4 /* Build configuration list for PBXProject "OSX字体替换工具" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5359821819A853660038FFC4;
+			productRefGroup = 5359822219A853660038FFC4 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 535982AA19A856960038FFC4 /* Products */;
+					ProjectRef = 535982A919A856960038FFC4 /* OSX字体替换工具启动器.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				5359822019A853660038FFC4 /* OSX字体替换工具 */,
+				5359823419A853660038FFC4 /* OSX字体替换工具Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		535982AE19A856980038FFC4 /* OSX字体替换工具启动器 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "OSX字体替换工具启动器";
+			remoteRef = 535982AD19A856980038FFC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5359821F19A853660038FFC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5359822D19A853660038FFC4 /* Images.xcassets in Resources */,
+				5359823019A853660038FFC4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5359823319A853660038FFC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5359821D19A853660038FFC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5359822B19A853660038FFC4 /* AppDelegate.swift in Sources */,
+				5359822919A853660038FFC4 /* ViewController.swift in Sources */,
+				5359822719A853660038FFC4 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5359823119A853660038FFC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5359823C19A853660038FFC4 /* OSX______Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5359823719A853660038FFC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5359822019A853660038FFC4 /* OSX字体替换工具 */;
+			targetProxy = 5359823619A853660038FFC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5359822E19A853660038FFC4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5359822F19A853660038FFC4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5359823D19A853660038FFC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5359823E19A853660038FFC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5359824019A853660038FFC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "OSX字体替换工具/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5359824119A853660038FFC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "OSX字体替换工具/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5359824319A853660038FFC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OSX字体替换工具Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OSX字体替换工具.app/Contents/MacOS/OSX字体替换工具";
+			};
+			name = Debug;
+		};
+		5359824419A853660038FFC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OSX字体替换工具Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OSX字体替换工具.app/Contents/MacOS/OSX字体替换工具";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5359821C19A853660038FFC4 /* Build configuration list for PBXProject "OSX字体替换工具" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5359823D19A853660038FFC4 /* Debug */,
+				5359823E19A853660038FFC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5359823F19A853660038FFC4 /* Build configuration list for PBXNativeTarget "OSX字体替换工具" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5359824019A853660038FFC4 /* Debug */,
+				5359824119A853660038FFC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5359824219A853660038FFC4 /* Build configuration list for PBXNativeTarget "OSX字体替换工具Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5359824319A853660038FFC4 /* Debug */,
+				5359824419A853660038FFC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5359821919A853660038FFC4 /* Project object */;
+}

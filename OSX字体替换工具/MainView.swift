@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
+class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate, NSAlertDelegate, NSWindowDelegate {
     
     @IBOutlet weak var 项目选择: NSComboBox!
     @IBOutlet weak var 字体选择: NSComboBox!
@@ -18,8 +18,27 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
 //    @IBOutlet weak var 大小选择: NSButton!
     @IBOutlet weak var 确定按钮: NSButton!
     @IBOutlet weak var 取消按钮: NSButton!
+    @IBOutlet weak var 示例图像: NSImageView!
+    
+    @IBOutlet weak var 还原按钮: NSButton!
+    @IBOutlet weak var 关于按钮: NSButton!
+    
+    @IBOutlet weak var demo1: NSTextField!
+    @IBOutlet weak var demo2: NSTextField!
+    @IBOutlet weak var demo3: NSTextField!
+    @IBOutlet weak var demo4: NSTextField!
+    @IBOutlet weak var demo5: NSTextField!
+    @IBOutlet weak var demo6: NSTextField!
+    @IBOutlet weak var demo7: NSTextField!
+    @IBOutlet weak var demo8: NSTextField!
+    @IBOutlet weak var demo9: NSTextField!
+    @IBOutlet weak var demo10: NSTextField!
+    @IBOutlet weak var demo11: NSTextField!
+    @IBOutlet weak var demo12: NSTextField!
+    @IBOutlet weak var demo13: NSTextField!
     
     let 文件路径:NSString = "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
+    let 备份文件路径:NSString = "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist.bak"
     var 已初始化:Bool = false
     var 已加载完成:Bool = false
     var 项目显示数组:NSMutableArray = NSMutableArray.array()
@@ -35,8 +54,18 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
     let 文件管理:NSFileManager = NSFileManager()
     var 字体管理:NSFontManager = NSFontManager.sharedFontManager()
 //    let 正在载入提示:NSTextField = NSTextField()
-    var 数据字典:NSMutableDictionary = NSMutableDictionary.dictionary()
-    var 数据字典备份:NSMutableDictionary = NSMutableDictionary.dictionary()
+    var 数据字典:NSDictionary = NSDictionary.dictionary()
+    var 数据字典备份:NSDictionary = NSDictionary.dictionary()
+//    var 遮罩:NSView = NSView()
+    @IBOutlet weak var 遮罩: NSTextField!
+    
+    
+//    var 全局窗口
+    
+    var 旧项目选择:Int = 0
+    var 旧字体选择:Int = 0
+    var 旧大小选择:Int = 0
+    var 旧语言选择:Int = 0
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
@@ -71,9 +100,11 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
                 大小选择.reloadData()
                 大小选择.selectItemAtIndex(0)
                 if (权限验证()) {
+                    还原按钮.enabled = true
                     确定按钮.enabled = true
                 } else {
-                    确定按钮.title = "没有保存权限"
+                    还原按钮.title = "请用启动器提权"
+                    确定按钮.title = "请用启动器提权"
                 }
                 项目选择.enabled = true
                 字体选择.enabled = true
@@ -84,6 +115,16 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
                 println(－－－)
                 已加载完成 = true
             }
+            示例图像.layer?.shadowColor = NSColor.blackColor().CGColor
+            示例图像.layer?.shadowOffset = CGSizeMake(2, 2)
+            示例图像.layer?.shadowOpacity = 1.0
+            示例图像.layer?.shadowRadius = 1.0
+            self.window?.delegate = self
+//            遮罩.layer?.backgroundColor = NSColor.blackColor().CGColor
+//            遮罩.alphaValue = 0.5
+//            self.addSubview(遮罩)
+//            遮罩.hidden = true
+            
 //            正在载入提示.removeFromSuperview()
 //            字体管理.delegate = self
         }
@@ -97,24 +138,56 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
 //    @IBAction func 大小选择(sender: NSComboBox) {
 //        字体管理.orderFrontFontPanel(self.layer)
 //    }
+    
+    func windowShouldClose(sender: AnyObject!) -> Bool
+    {
+        println("✋ 不保存设置并退出")
+        exit(0)
+    }
+    
+    func 遮罩视图(开关:Bool)
+    {
+        if (开关) {
+            遮罩.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+            遮罩.hidden = false
+        } else {
+            遮罩.hidden = true
+        }
+    }
+    
     func comboBoxSelectionDidChange(notification: NSNotification!)
     {
         if (已加载完成) {
             let 当前下拉框:NSComboBox = notification.object as NSComboBox
             switch (当前下拉框.tag) {
             case 100:
-                //println("项目修改")
+                if (当前下拉框.indexOfSelectedItem > 0 && 当前下拉框.indexOfSelectedItem < 1000)
+                {
+                    旧项目选择 = 当前下拉框.indexOfSelectedItem
+                }
+                读取当前项目字体()
                 break
             case 101:
+                if (当前下拉框.indexOfSelectedItem > 0 && 当前下拉框.indexOfSelectedItem < 1000)
+                {
+                    旧字体选择 = 当前下拉框.indexOfSelectedItem
+                }
                 写入配置()
                 break
             case 102:
-                //println("大小修改")
+                if (当前下拉框.indexOfSelectedItem > 0 && 当前下拉框.indexOfSelectedItem < 1000)
+                {
+                    旧大小选择 = 当前下拉框.indexOfSelectedItem
+                }
                 当前下拉框.selectItemAtIndex(0)
                 当前下拉框.enabled = false
                 break
             case 103:
-                //println("语言修改")
+                if (当前下拉框.indexOfSelectedItem > 0 && 当前下拉框.indexOfSelectedItem < 1000)
+                {
+                    旧语言选择 = 当前下拉框.indexOfSelectedItem
+                }
+                读取当前项目字体()
                 break
             default:
                 break
@@ -122,24 +195,256 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
         }
     }
     
-    func 写入配置() {
-        //项目选择
-        //字体选择
-        //语言选择
-        let 改为项目显示:NSString = 项目显示数组.objectAtIndex(项目选择.indexOfSelectedItem) as NSString
-        let 改为项目值:NSString = 项目值数组.objectAtIndex(项目选择.indexOfSelectedItem) as NSString
-        let 改为字体显示:NSString = 字体显示数组.objectAtIndex(字体选择.indexOfSelectedItem) as NSString
-        let 改为字体值:NSString = 字体值数组.objectAtIndex(字体选择.indexOfSelectedItem) as NSString
-        let 改为语言显示:NSString = 语言显示数组.objectAtIndex(语言选择.indexOfSelectedItem) as NSString
-        let 改为语言值:NSString = 语言值数组.objectAtIndex(语言选择.indexOfSelectedItem) as NSString
-        let 改为显示:NSString = NSString(format: "⌛️ 开始进行操作缓存：\n将处于%@时的%@改为%@字体…",改为语言显示,改为项目显示,改为字体显示)
-        println(改为显示)
-        println("⛔️ 制作中。")
+    func 读取当前项目字体()
+    {
+        匹配内存数据()
+        println("⌛️ 读取当前项目字体...")
+        var 项目选择当前选项:Int = 项目选择.indexOfSelectedItem
+        var 语言选择当前选项:Int = 语言选择.indexOfSelectedItem
+        let 当前项目显示:NSString = 项目显示数组.objectAtIndex(项目选择当前选项) as NSString
+        let 当前项目值:NSString = 项目值数组.objectAtIndex(项目选择当前选项) as NSString
+        let 当前语言显示:NSString = 语言显示数组.objectAtIndex(语言选择当前选项) as NSString
+        let 当前语言值:NSString = 语言值数组.objectAtIndex(语言选择当前选项) as NSString
+        let 全部KEY:NSArray = 数据字典.allKeys
+        var 调出字体显示:NSString = ""
+        var 调出字体值:NSString = ""
+        for 当前KEY对象 in 全部KEY {
+            let 当前KEY:NSString = 当前KEY对象 as NSString
+            if (当前KEY.isEqualToString(当前项目值) || 当前项目值.isEqualToString("all")) {
+                let 当前字典内容数组:NSArray = 数据字典.objectForKey(当前KEY对象) as NSArray
+                for 当前内容值 in 当前字典内容数组 {
+                    if (当前内容值 is NSArray) {
+                        let 语言设置数组:NSArray = 当前内容值 as NSArray
+                        var 未加入识别范围语言计数器:Int = 0
+                        for 当前语言数组对象 in 语言设置数组
+                        {
+                            let 当前语言数组:NSArray = 当前语言数组对象 as NSArray
+                            let 当前语言:NSString = 当前语言数组.objectAtIndex(0) as NSString
+                            let 当前语言字体:NSString = 当前语言数组.objectAtIndex(1) as NSString
+                            if (当前语言.isEqualToString(当前语言值) || 当前语言值.isEqualToString("all")) {
+                                println(当前语言字体)
+                                调出字体值 = 当前语言字体
+                                for (var i:Int = 0; i < 字体值数组.count; i++) {
+                                    let 已有语言字体值:NSString = 字体值数组.objectAtIndex(i) as NSString
+                                    if (当前语言字体.isEqualToString(已有语言字体值)) {
+                                        let 已有语言字体显示:NSString = 字体显示数组.objectAtIndex(i) as NSString
+                                        调出字体显示 = 已有语言字体显示
+                                        已加载完成 = false
+                                        字体选择.selectItemAtIndex(i)
+                                        已加载完成 = true
+                                    }
+                                }
+                                break
+                            }
+                        }
+                        break
+                    }
+                }
+                break
+            }
+        }
+        设置示例文字字体(调出字体值)
+        println("✅ 读取当前项目字体（\(调出字体显示)）成功。")
         println(－－－)
     }
     
+    func 设置示例文字字体(字体名:NSString)
+    {
+        let 设为字体 = NSFont(name: 字体名, size: 12)
+        demo1.font = 设为字体
+        demo2.font = 设为字体
+        demo3.font = 设为字体
+        demo4.font = 设为字体
+        demo5.font = 设为字体
+        demo6.font = 设为字体
+        demo7.font = 设为字体
+        demo8.font = 设为字体
+        demo9.font = 设为字体
+        demo10.font = 设为字体
+        demo11.font = 设为字体
+        demo12.font = 设为字体
+        demo13.font = 设为字体
+    }
+    
+    func 匹配内存数据()
+    {
+        已加载完成 = false
+        println("⌛️ 开始匹配内存数据：")
+        if (字体选择.indexOfSelectedItem > 1000 || 字体选择.indexOfSelectedItem < 0) {
+            字体选择.selectItemAtIndex(旧字体选择)
+            println("🔵 修正字体选择数据。")
+        }
+        if (项目选择.indexOfSelectedItem > 1000 || 项目选择.indexOfSelectedItem < 0) {
+            项目选择.selectItemAtIndex(旧项目选择)
+            println("🔵 修正项目选择数据。")
+        }
+        if (语言选择.indexOfSelectedItem > 1000 || 语言选择.indexOfSelectedItem < 0) {
+            语言选择.selectItemAtIndex(旧语言选择)
+            println("🔵 修正语言选择数据。")
+        }
+        已加载完成 = true
+        println("✅ 匹配内存数据成功。")
+    }
+    
+    func 写入配置() {
+        匹配内存数据()
+        var 字体选择当前选项:Int = 字体选择.indexOfSelectedItem
+        if (字体选择当前选项 > 0) {
+            var 项目选择当前选项:Int = 项目选择.indexOfSelectedItem
+            var 语言选择当前选项:Int = 语言选择.indexOfSelectedItem
+            println("⌛️ 开始进行操作缓存：")
+            
+            var 操作缓存:ChangeData = ChangeData()
+            操作缓存.改为项目显示 = 项目显示数组.objectAtIndex(项目选择当前选项) as NSString
+            操作缓存.改为项目值 = 项目值数组.objectAtIndex(项目选择当前选项) as NSString
+            操作缓存.改为字体显示 = 字体显示数组.objectAtIndex(字体选择当前选项) as NSString
+            操作缓存.改为字体值 = 字体值数组.objectAtIndex(字体选择当前选项) as NSString
+            操作缓存.改为语言显示 = 语言显示数组.objectAtIndex(语言选择当前选项) as NSString
+            操作缓存.改为语言值 = 语言值数组.objectAtIndex(语言选择当前选项) as NSString
+            设置示例文字字体(操作缓存.改为字体值)
+            操作缓存.数据 = 数据字典
+            数据字典 = 操作缓存.开始处理操作()
+            println("✅ 操作缓存成功。")
+            println(－－－)
+        } else {
+            println("⚠️ 请选择一个字体。")
+            println(－－－)
+        }
+    }
+    
+//    func alertShowHelp(alert: NSAlert!) -> Bool
+//    {
+//        println("TTT")
+//        return true
+//    }
+    
+    func 提示框调用完成(alert:NSAlert)
+    {
+        遮罩视图(false)
+    }
+    
+    func 备份文件() -> Bool
+    {
+        var 是否成功:Bool = false
+        println("⌛️ 检查是否有备份文件...")
+        let 文件是否存在:Bool = 文件管理.fileExistsAtPath(文件路径)
+        let 备份文件是否存在:Bool = 文件管理.fileExistsAtPath(备份文件路径)
+        if (文件是否存在) {
+            if (备份文件是否存在) {
+                是否成功 = true
+                println("✅ 备份文件存在。")
+            } else {
+                println("🔵 备份文件不存在。")
+                println("⌛️ 正在创建备份文件...")
+                var err:NSError? = nil
+                文件管理.copyItemAtPath(文件路径, toPath: 备份文件路径, error: &err)
+                if (err != nil) {
+                    println("⛔️ 创建备份文件失败，可能权限不足。")
+                } else {
+                    是否成功 = true
+                    println("✅ 文件备份完毕。")
+                }
+            }
+        } else {
+            println("⛔️ 检查是否有备份文件失败，可能权限不足。")
+        }
+        if (!是否成功) {
+            遮罩视图(true)
+            let 提示框:NSAlert = NSAlert()
+            提示框.addButtonWithTitle("中止")
+            提示框.messageText = "⛔️ 创建备份文件失败。"
+            提示框.informativeText = "备份文件或创建备份文件失败，可能权限不足。"
+            提示框.alertStyle = NSAlertStyle.WarningAlertStyle
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
+        }
+        return 是否成功
+    }
+    
+    @IBAction func 关于按钮点击(sender: NSButton) {
+        let 打开网站:NSURL = NSURL.URLWithString("http://uuu.moe/?p=1392")
+        NSWorkspace.sharedWorkspace().openURL(打开网站)
+    }
+    
+    @IBAction func 还原按钮点击(sender: NSButton) {
+        var 是否成功:Bool = false
+        println(－－－)
+        println("⌛️ 正在准备还原...")
+        let 备份文件是否存在:Bool = 文件管理.fileExistsAtPath(备份文件路径)
+        if (备份文件是否存在) {
+            println("✅ 找到备份文件。")
+            println("⌛️ 正在删除旧文件...")
+            var err:NSError? = nil
+            let 文件是否存在:Bool = 文件管理.fileExistsAtPath(文件路径)
+            if (文件是否存在) {
+                文件管理.removeItemAtPath(文件路径, error: &err)
+            }
+            if (err != nil) {
+                println("⛔️ 删除旧文件失败。")
+            } else {
+                println("✅ 删除旧文件成功。")
+            }
+            println("⌛️ 正在创建备份文件...")
+            文件管理.copyItemAtPath(备份文件路径, toPath: 文件路径, error: &err)
+            if (err != nil) {
+                println("⛔️ 还原文件失败，可能权限不足。")
+                遮罩视图(true)
+                let 提示框:NSAlert = NSAlert()
+                提示框.addButtonWithTitle("中止")
+                提示框.messageText = "⛔️ 还原文件失败。"
+                提示框.informativeText = "还原文件失败，可能权限不足。"
+                提示框.alertStyle = NSAlertStyle.WarningAlertStyle
+                //提示框.delegate = self
+                提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
+            } else {
+                是否成功 = true
+                println("✅　一键还原完成，软件自动退出。")
+            }
+        } else {
+            println("⛔️ 没有找到备份文件。")
+            遮罩视图(true)
+            let 提示框:NSAlert = NSAlert()
+            提示框.addButtonWithTitle("中止")
+            提示框.messageText = "⛔️ 没有找到备份文件。"
+            提示框.informativeText = "系统文件尚未备份，将在第一次应用设置时自动备份。"
+            提示框.alertStyle = NSAlertStyle.WarningAlertStyle
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
+        }
+    }
     @IBAction func 确定按钮点击(sender: NSButton) {
-        println("确定按钮点击")
+        if (已加载完成) {
+            if (备份文件()) {
+                let 是否可以写入:Bool = 数据字典.writeToFile(文件路径, atomically: true)
+                if (是否可以写入) {
+                    压缩配置文件()
+                    println("✅ 应用设置到系统成功，软件自动退出。\n建议先重新启动系统。")
+                    遮罩视图(true)
+                    let 提示框:NSAlert = NSAlert()
+                    提示框.addButtonWithTitle("确定")
+                    提示框.messageText = "✅ 应用设置到系统成功。"
+                    提示框.informativeText = "请注销或重新启动计算机查看修改效果。"
+                    提示框.alertStyle = NSAlertStyle.WarningAlertStyle
+                    //提示框.delegate = self
+                    提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
+//                    system("killall Finder")
+//                    exit(0)
+                } else {
+                    println("⛔️ 应用设置到系统失败，文件写入失败。")
+                    遮罩视图(true)
+                    let 提示框:NSAlert = NSAlert()
+                    提示框.addButtonWithTitle("中止")
+                    提示框.messageText = "⛔️ 应用设置到系统失败"
+                    提示框.informativeText = "文件写入失败，操作可能被阻止。"
+                    提示框.alertStyle = NSAlertStyle.WarningAlertStyle
+                    //提示框.delegate = self
+                    提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
+                }
+
+            }
+                    } else {
+            println("⛔️ 请等待上一项操作完成。")
+        }
     }
     @IBAction func 取消按钮点击(sender: NSButton) {
         println("✋ 不保存设置并退出")
@@ -185,13 +490,15 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
             println("✅ 当前系统版本支持。")
             return true
         } else {
-            println("⚠️ 当前系统版本不支持。")
-            let 提示框:NSAlert = NSAlert()
+            println("⚠️ 当前系统版本可能不支持。")
+            遮罩视图(true)
+let 提示框:NSAlert = NSAlert()
             提示框.addButtonWithTitle("知道了，继续")
             提示框.messageText = "⚠️ 当前系统版本不在支持列表内"
-            提示框.informativeText = "你仍可以继续使用，但程序可能无法正常运行（包括程序发生错误甚至造成系统无法启动）。在使用前请注意备份您的文件。如果你帮助进行了测试，请将终端窗口中的软件日志发送到cxchope@163.com帮助作者改进。"
+            提示框.informativeText = "你仍可以继续使用，但程序可能无法正常运行（包括程序发生错误或者造成异常）。在使用前请注意备份您的文件。如果你帮助进行了测试，请将终端窗口中的软件日志发送到cxchope@163.com帮助作者改进。"
             提示框.alertStyle = NSAlertStyle.WarningAlertStyle
-            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
             return false
         }
     }
@@ -253,12 +560,14 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
             return true
         } else {
             println("⛔️ 创建可调整语言列表失败。")
-            let 提示框:NSAlert = NSAlert()
+            遮罩视图(true)
+let 提示框:NSAlert = NSAlert()
             提示框.addButtonWithTitle("中止")
             提示框.messageText = "⛔️ 创建可调整语言列表失败"
             提示框.informativeText = "由于列表格式不匹配或者不是亚洲版系统，应用无法继续。"
             提示框.alertStyle = NSAlertStyle.WarningAlertStyle
-            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
             return false
         }
     }
@@ -291,12 +600,14 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
             字体显示数组.removeAllObjects()
             字体值数组.removeAllObjects()
             println("⛔️ 载入字体失败。")
-            let 提示框:NSAlert = NSAlert()
+            遮罩视图(true)
+let 提示框:NSAlert = NSAlert()
             提示框.addButtonWithTitle("中止")
             提示框.messageText = "⛔️ 载入字体失败"
             提示框.informativeText = "列字体失败，或者系统中有无效字体。"
             提示框.alertStyle = NSAlertStyle.WarningAlertStyle
-            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
             return false
         }
         
@@ -342,12 +653,14 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
             项目显示数组.removeAllObjects()
             项目值数组.removeAllObjects()
             println("⛔️ 读取系统设置失败。")
-            let 提示框:NSAlert = NSAlert()
+            遮罩视图(true)
+let 提示框:NSAlert = NSAlert()
             提示框.addButtonWithTitle("中止")
             提示框.messageText = "⛔️ 读取系统设置失败"
             提示框.informativeText = "未能找到制定文件，程序无法继续。\n解析库“CoreText”出现错误。"
             提示框.alertStyle = NSAlertStyle.WarningAlertStyle
-            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
             return false
         }
     }
@@ -360,14 +673,20 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
             println("✅ 文件检查完成。")
         } else {
             println("⛔️ 文件检查失败。")
-            let 提示框:NSAlert = NSAlert()
+            遮罩视图(true)
+let 提示框:NSAlert = NSAlert()
             提示框.addButtonWithTitle("中止")
             提示框.messageText = "⛔️ 文件读取失败"
             提示框.informativeText = "未能找到指定文件，程序无法继续。\n解析库“CoreText”不完整。"
             提示框.alertStyle = NSAlertStyle.WarningAlertStyle
-            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
         }
         return 文件是否存在
+    }
+    
+    func 压缩配置文件() {
+        system("plutil -convert binary1 /System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist")
     }
     
     func 权限验证() -> Bool
@@ -375,15 +694,18 @@ class MainView: NSView, NSComboBoxDataSource, NSComboBoxDelegate {
         println("⌛️ 正在验证权限...")
         let 是否可以写入:Bool = 数据字典.writeToFile(文件路径, atomically: true)
         if (是否可以写入) {
+            压缩配置文件()
             println("✅ 验证权限完成。")
         } else {
             println("⚠️ 验证权限失败。")
-            let 提示框:NSAlert = NSAlert()
+            遮罩视图(true)
+let 提示框:NSAlert = NSAlert()
             提示框.addButtonWithTitle("知道了，继续")
-            提示框.messageText = "⚠️ 验证权限失败"
+            提示框.messageText = "⚠️ 验证权限失败，请从同目录中的启动器来启动。"
             提示框.informativeText = "无法对系统文件进行修改操作，可能因为权限不足。\n请从专用启动器启动本程序以获得足够的访问权限。\n您可以继续操作，但是将无法保存设置！"
             提示框.alertStyle = NSAlertStyle.WarningAlertStyle
-            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+            //提示框.delegate = self
+            提示框.beginSheetModalForWindow(self.window, modalDelegate: self, didEndSelector: "提示框调用完成:", contextInfo: nil)
         }
         return 是否可以写入
     }

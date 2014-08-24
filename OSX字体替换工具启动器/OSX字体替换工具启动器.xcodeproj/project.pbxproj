@@ -28,7 +28,7 @@
 		535982A219A856960038FFC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		535982AF19A857990038FFC4 /* Starter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Starter.h; sourceTree = "<group>"; };
 		535982B019A857990038FFC4 /* Starter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Starter.m; sourceTree = "<group>"; };
-		538D870D19A8670900C32941 /* OSX字体替换工具.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = "OSX字体替换工具.app"; path = "../../../../../Users/yashi/Library/Developer/Xcode/DerivedData/OSX字体替换工具-bqynseddbnkykyaeofspmrnmseff/Build/Products/Debug/OSX字体替换工具.app"; sourceTree = "<group>"; };
+		53F8FB0419AA1A2E000348EF /* OSX字体配置修改工具.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = "OSX字体配置修改工具.app"; path = "../../../../../Users/yashi/Library/Developer/Xcode/DerivedData/OSX字体替换工具-bqynseddbnkykyaeofspmrnmseff/Build/Products/Debug/OSX字体配置修改工具.app"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 		535982A119A856960038FFC4 /* OSX字体替换工具启动器 */ = {
 			isa = PBXGroup;
 			children = (
-				538D870D19A8670900C32941 /* OSX字体替换工具.app */,
+				53F8FB0419AA1A2E000348EF /* OSX字体配置修改工具.app */,
 				535982A219A856960038FFC4 /* main.m */,
 				535982AF19A857990038FFC4 /* Starter.h */,
 				535982B019A857990038FFC4 /* Starter.m */,
@@ -166,7 +166,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -201,7 +201,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

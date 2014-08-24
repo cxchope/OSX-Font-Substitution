@@ -12,6 +12,7 @@
 
 - (void)start
 {
+    NSString *softName = @"OSX字体配置修改工具";
     [self printline:"="];
     printf("字体替换工具启动器 v1.0.0\n");
     printf("http://uuu.moe\n");
@@ -20,8 +21,8 @@
 //    [self chkFile];
     printf("为了修改系统字体，本程序需要以管理员权限运行才能继续。\n");
     printf("请输入你的管理员密码(不显示*号)，并按回车继续：\a\n");
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"OSX字体替换工具" ofType:@"app"];
-    NSString *address = [NSString stringWithFormat:@"sudo %@/Contents/MacOS/OSX字体替换工具",path];
+    NSString *path = [[NSBundle mainBundle] pathForResource:softName ofType:@"app"];
+    NSString *address = [NSString stringWithFormat:@"sudo %@/Contents/MacOS/%@",path,softName];
     BOOL endid = system(address.UTF8String);
     [self printline:"="];
     if (endid == 0) {
